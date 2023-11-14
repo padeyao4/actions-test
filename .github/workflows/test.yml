@@ -1,6 +1,9 @@
 name: build
 run-name: ${{ github.actor }} 🚀
-on: push
+on:
+  push:
+    tags:
+      - "*"
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
