@@ -1,0 +1,25 @@
+name: build
+run-name: ${{ github.actor }} 🚀
+on: push
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - run: echo hello > hello
+
+      - name: Create Release and Upload Release Asset
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          tag_name: ${{ github.ref }}
+          name: Release ${{ github.ref }}
+          body: update.
+          draft: false
+          prerelease: false
+          files: |
+            ./hello
+
+      - run: echo "🍏 This job's status is ${{ job.status }}."
