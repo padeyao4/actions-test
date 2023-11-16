@@ -22,10 +22,6 @@ jobs:
         with:
           version: 6.10.0
 
-      - run: pnpm install
-
-      - run: pnpm run build:win
-
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
